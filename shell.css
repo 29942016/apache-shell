@@ -1,0 +1,56 @@
+body{
+	background-color:black;
+}
+
+p{
+	color:green;
+}
+
+.text-light{
+	color:lightgreen;
+}
+.text-dark{
+	color:darkgreen;
+}
+#wrapper{
+	position:relative;
+	height:100%;
+	width:100%;
+}
+#promptBox{
+	color:green;
+	padding:3px;
+
+	position:fixed;
+	bottom:0;
+	
+	width:100%;
+	height:30px;
+	border-top:1px solid white;
+}
+#outputBox{
+	color:green;
+}
+.promptPS1{
+	line-height:23px;
+	float:left;
+	color:white;
+}
+.promptInput{
+	padding-left:5px;
+	color:green;
+	background-color:transparent;
+	width:85%;
+	float:left;
+	border:none;
+}
+#resultWrapper{
+	color:green;
+	border:1px solid white;;
+	
+	position:fixed;
+	bottom:50px;
+	width:99%;
+	height:95%;
+	overflow:hidden;	
+}
