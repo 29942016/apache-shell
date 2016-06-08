@@ -1,17 +1,18 @@
 # PHP-Shell
-PHP emulated shell on a webserver.
+My custom php webshell
+![alt tag](http://i.imgur.com/IUNVrwA.png)
 
 Todo:<br />
 Server side: <br />
-[ 0%] server calls. <br />
-[ 0%] output handler. <br />
-[ 0%] text buffer. <br />
-[ 0%] error handler. <br />
+[ 100%] server calls. <br />
+[ 100%] output handler. <br />
+[ 100%] text buffer. <br />
+[ 25%] error handler. <br />
 
 Client side: <br />
-[ 0%] ajax realtime updating for buffer. <br />
-[ 0%] style sheet. <br />
-[15%] html layout. <br />
+[ 100%] ajax realtime updating for buffer. <br />
+[ 50%] style sheet. <br />
+[100%] html layout. <br />
 
 Release:<br />
 [ 0%] packaging. <br />
@@ -22,3 +23,4 @@ Testing: <br />
 [ 0%] port binding. <br />
 [ 0%] reverse shell connection <br />
 [ 0%] custom routing <br />
+
