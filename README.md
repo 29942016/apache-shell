@@ -4,23 +4,23 @@ My custom php webshell
 
 Todo:<br />
 Server side: <br />
-[ 100%] server calls. <br />
-[ 100%] output handler. <br />
-[ 100%] text buffer. <br />
-[ 25%] error handler. <br />
+[X] server calls. <br />
+[X] output handler. <br />
+[X] text buffer. <br />
+[X] error handler. <br />
 
 Client side: <br />
-[ 100%] ajax realtime updating for buffer. <br />
-[ 50%] style sheet. <br />
-[100%] html layout. <br />
+[X] ajax realtime updating for server stdout. <br />
+[ ] style sheet. <br />
+[X] html layout. <br />
 
 Release:<br />
-[ 0%] packaging. <br />
+[ ] package for portable single php file.<br />
 
 Testing: <br />
-[ 0%] Firewall handling. <br />
-[ 0%] SEL handling. <br />
-[ 0%] port binding. <br />
-[ 0%] reverse shell connection <br />
-[ 0%] custom routing <br />
+[ ] Firewall handling. <br />
+[ ] SEL handling. <br />
+[ ] port binding. <br />
+[ ] reverse shell connection <br />
+[ ] custom routing <br />
 
