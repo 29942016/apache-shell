@@ -22,17 +22,40 @@
 </html>
 
 <script type="text/javascript">
-
+//Looks after the up/down command cycling
+var commandHistory = [" "];
+var historyPointer = 0;
+//Used to control command std_out flow
 var stackpointer = 0;
 var resultCounter = [0];
-//On enter of text input
-document.getElementById("shell").addEventListener("keyup", function(event) 
+
+var prompt = document.getElementById("shell");
+
+//prompt input event handler
+prompt.addEventListener("keyup", function(event) 
 {
-    event.preventDefault();
-    if (event.keyCode == 13) 
+	event.preventDefault();
+	if(event.keyCode == 38)
+	{
+		if(commandHistory[0] != undefined && historyPointer > 0)
+		{
+			prompt.value = commandHistory[historyPointer];
+			historyPointer--;
+			console.log(historyPointer);
+		}
+	}	
+   	else if(event.keyCode == 40)
+	{
+		if(commandHistory[0] != undefined && historyPointer < commandHistory.length-1)
+		{
+			prompt.value = commandHistory[historyPointer+1];
+			historyPointer++;
+			console.log(historyPointer);
+		}
+	}  
+	else if(event.keyCode == 13) 
 	{
 		var command = document.getElementById("shell").value;
-		document.getElementById("shell").value = "";
 		$.ajax({
 			type: "POST",
 			url: "exec.php",
@@ -56,11 +79,15 @@ document.getElementById("shell").addEventListener("keyup", function(event)
 				//Keep at the top of text stack
 				var scrollRegion = document.getElementById("resultWrapper");
 				scrollRegion.scrollTop = scrollRegion.scrollHeight;
+				//Add an entry to our command history
+				commandHistory.push(prompt.value);
+				console.log(commandHistory);
+				//Clear our input prompt
+				prompt.value = "";
+			
+				historyPointer++;
 			}
 		});  
-		
-
-		//alert("Exec server command");
     }
 });
 
