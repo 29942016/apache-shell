@@ -56,39 +56,48 @@ prompt.addEventListener("keyup", function(event)
 	else if(event.keyCode == 13) 
 	{
 		var command = document.getElementById("shell").value;
-		$.ajax({
-			type: "POST",
-			url: "exec.php",
-			datatype: 'json',
-			cache: false,
-			data: { data : command },
-			success: function(data)
-			{
-				//Create div with result from exec()
-				$("#resultWrapper").append("<div id='"+stackpointer+"'><a style='margin-bottom:2px;color:white;'><?php echo $PS1 ?> $ "+command + "</a><br>" + printJSON(data) + "</div>");				
-				//Handle the text buffer/flow
-				stackpointer++;
-				resultCounter.push(stackpointer);
-
-				//If more than 10 divs, start clearing.
-				if(resultCounter.length > 10)
+		
+		if(command == "clear")
+		{
+			console.log("Calling clearBuffer()");
+			clearBuffer();
+		}
+		else
+		{
+			$.ajax({
+				type: "POST",
+				url: "exec.php",
+				datatype: 'json',
+				cache: false,
+				data: { data : command },
+				success: function(data)
 				{
-					document.getElementById(resultCounter[0]).remove();
-					resultCounter.shift();
-				}
-				//Keep at the top of text stack
-				var scrollRegion = document.getElementById("resultWrapper");
-				scrollRegion.scrollTop = scrollRegion.scrollHeight;
-				//Add an entry to our command history
-				commandHistory.push(prompt.value);
-				console.log(commandHistory);
-				//Clear our input prompt
-				prompt.value = "";
+					//Create div with result from exec()
+					$("#resultWrapper").append("<div id='"+stackpointer+"'><a style='margin-bottom:2px;color:white;'><?php echo $PS1 ?> $ "+command + "</a><br>" + printJSON(data) + "</div>");				
+					//Handle the text buffer/flow
+					stackpointer++;
+					resultCounter.push(stackpointer);
+
+					//If more than 10 divs, start clearing.
+					if(resultCounter.length > 10)
+					{
+						document.getElementById(resultCounter[0]).remove();
+						resultCounter.shift();
+					}
+					//Keep at the top of text stack
+					var scrollRegion = document.getElementById("resultWrapper");
+					scrollRegion.scrollTop = scrollRegion.scrollHeight;
+					//Add an entry to our command history
+					commandHistory.push(prompt.value);
+					console.log(commandHistory);
+					//Clear our input prompt
+					prompt.value = "";
 			
-				historyPointer++;
-			}
-		});  
-    }
+					historyPointer++;
+				}
+			});  
+    	}
+	}
 });
 
 //Will deserialize the result of a command
@@ -105,5 +114,11 @@ function printJSON(info)
 	}
 	console.log(output);
 	return output;
+}
+//Empties output field.
+function clearBuffer()
+{
+	document.getElementById("resultWrapper").innerHTML= "";	
+	prompt.value = "";
 }
 </script>
