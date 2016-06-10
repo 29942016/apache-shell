@@ -13,11 +13,11 @@ Server side: <br />
 
 Client side: <br />
 [X] ajax realtime updating for server stdout. <br />
-[ ] style sheet. <br />
-[X] html layout. <br />
+[X] style sheet. <br />
+[X] HTML  layout. <br />
 
 Release:<br />
-[ ] package for portable single php file.<br />
+[X] package for portable single php file.<br />
 
 Testing: <br />
 [ ] Firewall handling. <br />
