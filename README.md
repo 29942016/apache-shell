@@ -19,10 +19,3 @@ Client side: <br />
 Release:<br />
 [X] package for portable single php file.<br />
 
-Testing: <br />
-[ ] Firewall handling. <br />
-[ ] SEL handling. <br />
-[ ] port binding. <br />
-[ ] reverse shell connection <br />
-[ ] custom routing <br />
-
